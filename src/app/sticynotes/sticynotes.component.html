@@ -1,0 +1,96 @@
+
+
+<button type="button" class="btn btn-outline-warning" style="position: absolute;padding: 1rem;right: 0;bottom: 0;"
+[disabled]="disabled"(click)="openModal(addnotes)">ADD notes</button>
+
+<ng-template #addnotes>
+ <div class="modal-header">
+   <h4 class="modal-title pull-left">add new notes</h4>
+   <button type="button" class="close pull-right" aria-label="Close" (click)="disable()">
+     <span aria-hidden="true">&times;</span>
+  </button>
+ </div>
+ 
+ <div>
+    <ul>
+      <input required type="text" maxlength="100" name="heading" [(ngModel)]="notes.heading" class="form-control" placeholder="Heading" name="title" id="">        
+      
+    </ul>
+  </div>
+    <div class="modal-body">
+        <textarea name="description" maxlength="200"  [(ngModel)]="notes.description" cols ="30" rows="10" class="form-control" placeholder="description">
+        </textarea>
+        
+    </div>
+    <div class="form-group">
+      <button type="submit" class="close pull-right" (click)="save(notes)" style="position: absolute;padding: 1rem;right: 0;bottom: 0;">save</button>  
+   </div>
+</ng-template>
+
+<ul class="showdata">  
+<div>
+    <li *ngFor="let not of keep">
+        <a>
+            <!-- <div></div><button type="button" class="btn btn-primary"style="position: ab" aria-label="Close" (click)="editNote(not)">
+              <span aria-hidden="true">u </span></button>     update notes  button  -->
+          <div><button type="button" class="close pull-right" aria-label="Close" (click)="delete(not)">
+             <span aria-hidden="true">&times;</span></button>  <!--delete motes button -->
+            </div>
+            <br>
+          <h2 (click)="editNote(not,addnotes)">{{not.heading}}</h2><br>    <!--notes dispay-->
+          <p>{{not.description}}</p>       
+       </a>
+    </li>
+    </div>
+    
+      <!-- <form *ngIf="let not of keep" [(ngModal)]="not.heading" >
+      </form> -->
+    <!-- <form *ngIf="note.heading" [formGroup]="editNoteForm" (ngSubmit)="onEditSubmit(note, editNoteForm.value)">
+      <div class="form__group">
+      <input type="text" class="form__control" id="title" value="{{note.heading}}" required name="title"  [formControl]="editNoteForm.controls['title']">        
+      </div>
+      <div class="form__group">
+        <textarea autofocus class="form__control" id="content" required name="content" 
+        [formControl]="editNoteForm.controls['content']" value="{{note.description}}"></textarea>
+      </div>
+      <button type="submit" class="form__submit" [disabled]="!editNoteForm.valid">Save</button>
+    </form> -->
+
+    <!-- <ng-template #updtenotes>
+      <div class="modal-header" *ngIf="let not of keep" [(ngModal)]="not.heading">
+        <h4 class="modal-title pull-left">update notes</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="disable()">
+          <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      <div>
+         <ul>
+           <input required type="text" name="heading" [(ngModel)]="not.heading" class="form-control" placeholder="Heading">        
+         </ul>
+       </div>
+         <div class="modal-body">
+             <textarea name="description" [(ngModel)]="not.description" cols ="30" rows="10" class="form-control" placeholder="description">
+             </textarea>
+         </div>
+         <div> 
+           <button type="button" class="btn btn-primary" (click)="save(not)" style="position: absolute;padding: 1rem;right: 0;bottom: 0;">save</button>  
+        </div>
+     </ng-template>
+        -->
+   <!-- <ul>
+       <li>
+         <a >
+           <h2>Title #1</h2>
+           <p>Text Content #1</p>
+         </a>
+       </li>
+       <li>
+         <a>
+           <h2>Title #2</h2>
+           <p>Text Content #2</p>
+         </a>
+       </li>
+       
+     </ul> -->
+
+     
